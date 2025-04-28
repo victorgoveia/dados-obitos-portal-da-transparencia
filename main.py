@@ -3,7 +3,7 @@ import pandas as pd
 from datetime import datetime, timedelta
 from concurrent.futures import ThreadPoolExecutor, as_completed
 
-# Configuração
+
 API_URL = "https://transparencia.registrocivil.org.br/api/record/death"
 HEADERS = {
     "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36"
@@ -99,7 +99,7 @@ def save_data(df, output_format="parquet"):
         df.to_excel(output_filename, index=False)
     elif output_format == "csv":
         df.to_csv(output_filename, index=False, sep=";")
-    else:  # Default: Parquet (mais eficiente)
+    else:
         df.to_parquet(output_filename, index=False)
 
     print(f"Dados salvos com sucesso em {output_filename}")
